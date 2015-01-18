@@ -1,7 +1,8 @@
--module(tut).
+-module(hello).
 -export([double/1]).
 -export([fac/1, mult/2]).
 -export([convert/2]).
+-export([hello_world/0]).
 
 double(X) ->
     2 * X.
@@ -19,3 +20,5 @@ convert(M, inch) ->
 
 convert(N, centimeter) ->
     N * 2.54.
+
+hello_world() -> io:fwrite("hello, world\n").

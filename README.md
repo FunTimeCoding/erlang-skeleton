@@ -36,3 +36,13 @@ Do not start erlang shell when running code.
 ```sh
 erl -noshell -s hello hello_world -s init stop
 ```
+
+
+## Testing
+
+Run a test suite
+
+```sh
+mkdir -p build/result
+ct_run -suite test/basic_SUITE -logdir build/result
+```

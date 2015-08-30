@@ -1,23 +1,16 @@
-# Erlang Project Skeleton
+# ErlangSkeleton
 
-
-Start erlang shell.
+Enter interactive mode.
 
 ```sh
 erl
 ```
-
-
-## Compiling
 
 Compile a module.
 
 ```sh
 erl -compile hello.erl
 ```
-
-
-## Running code
 
 Run a function that has no arguments.
 
@@ -37,12 +30,8 @@ Do not start erlang shell when running code.
 erl -noshell -s hello hello_world -s init stop
 ```
 
-
-## Testing
-
-Run a test suite
+Build the project.
 
 ```sh
-mkdir -p build/result
-ct_run -suite test/basic_SUITE -logdir build/result
+./build.sh
 ```

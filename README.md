@@ -1,5 +1,15 @@
 # ErlangSkeleton
 
+## Development
+
+This section explains how to use scripts that are intended to ease the development of this project.
+
+Build the project like Jenkins.
+
+```sh
+./build.sh
+```
+
 Enter interactive mode.
 
 ```sh
@@ -28,10 +38,4 @@ Do not start erlang shell when running code.
 
 ```sh
 erl -noshell -s hello hello_world -s init stop
-```
-
-Build the project.
-
-```sh
-./build.sh
 ```

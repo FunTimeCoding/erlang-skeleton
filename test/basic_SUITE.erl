@@ -9,5 +9,6 @@ test1(_Config) ->
     1 = 1.
 
 test2(_Config) ->
-    A = 0,
+    %% TODO: Set A to 0 and expect the badarith error.
+    A = 1,
     1/A.

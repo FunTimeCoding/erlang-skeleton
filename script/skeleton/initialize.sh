@@ -24,7 +24,7 @@ DASH=$(echo "${NAME}" | ${SED} --regexp-extended 's/([A-Za-z0-9])([A-Z])/\1-\2/g
 INITIALS=$(echo "${NAME}" | ${SED} 's/\([A-Z]\)[a-z]*/\1/g' | tr '[:upper:]' '[:lower:]')
 UNDERSCORE=$(echo "${DASH}" | ${SED} --regexp-extended 's/-/_/g')
 # shellcheck disable=SC2016
-${FIND} . -type f -regextype posix-extended ! -regex '^.*/(build|\.git|\.idea)/.*$' -exec sh -c '${1} -i --expression "s/ErlangSkeleton/${2}/g" --expression "s/erlang-skeleton/${3}/g" --expression "s/erlang_skeleton/${4}/g" --expression "s/bin\/ss/bin\/${5}/g" --expression "s/ss\\\\/${5}\\\\/g" "${6}"' '_' "${SED}" "${NAME}" "${DASH}" "${UNDERSCORE}" "${INITIALS}" '{}' \;
-git mv lib/shell_skeleton.sh "lib/${UNDERSCORE}.sh"
-git mv bin/ss "bin/${INITIALS}"
+${FIND} . -type f -regextype posix-extended ! -regex '^.*/(build|\.git|\.idea)/.*$' -exec sh -c '${1} -i --expression "s/ErlangSkeleton/${2}/g" --expression "s/erlang-skeleton/${3}/g" --expression "s/erlang_skeleton/${4}/g" --expression "s/bin\/es/bin\/${5}/g" --expression "s/es\\\\/${5}\\\\/g" "${6}"' '_' "${SED}" "${NAME}" "${DASH}" "${UNDERSCORE}" "${INITIALS}" '{}' \;
+git mv lib/erlang_skeleton.sh "lib/${UNDERSCORE}.sh"
+git mv bin/es "bin/${INITIALS}"
 echo "# This dictionary file is for domain language." > "documentation/dictionary/${DASH}.dic"

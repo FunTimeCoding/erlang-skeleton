@@ -40,9 +40,14 @@ cp -R script/* "${TARGET}/script"
 cp .gitignore "${TARGET}"
 cp Vagrantfile "${TARGET}"
 cd "${TARGET}" || exit 1
-rm -rf script/skeleton
+echo "${NAME}" | grep --quiet 'Skeleton$' && IS_SKELETON=true || IS_SKELETON=false
+
+if [ "${IS_SKELETON}" = false ]; then
+    rm -rf script/skeleton
+fi
+
 DASH=$(echo "${NAME}" | ${SED} --regexp-extended 's/([A-Za-z0-9])([A-Z])/\1-\2/g' | tr '[:upper:]' '[:lower:]')
 INITIALS=$(echo "${NAME}" | ${SED} 's/\([A-Z]\)[a-z]*/\1/g' | tr '[:upper:]' '[:lower:]')
 UNDERSCORE=$(echo "${DASH}" | ${SED} --regexp-extended 's/-/_/g')
 # shellcheck disable=SC2016
-${FIND} . -type f -regextype posix-extended ! -regex '^.*/(build|\.git|\.idea)/.*$' -exec sh -c '${1} -i --expression "s/ErlangSkeleton/${2}/g" --expression "s/erlang-skeleton/${3}/g" --expression "s/erlang_skeleton/${4}/g" --expression "s/bin\/es/bin\/${5}/g" --expression "s/ss\\\\/${5}\\\\/g" "${6}"' '_' "${SED}" "${NAME}" "${DASH}" "${UNDERSCORE}" "${INITIALS}" '{}' \;
+${FIND} . -type f -regextype posix-extended ! -regex '^.*/(build|\.git|\.idea)/.*$' -exec sh -c '${1} -i --expression "s/ErlangSkeleton/${2}/g" --expression "s/erlang-skeleton/${3}/g" --expression "s/erlang_skeleton/${4}/g" --expression "s/bin\/es/bin\/${5}/g" --expression "s/es\\\\/${5}\\\\/g" "${6}"' '_' "${SED}" "${NAME}" "${DASH}" "${UNDERSCORE}" "${INITIALS}" '{}' \;

@@ -1,4 +1,10 @@
-build
-tmp
-.vagrant
+/build
+/tmp
+/.vagrant
+/debian/files
+/debian/debhelper-build-stamp
+/debian/erlang-skeleton
+/debian/erlang-skeleton.substvars
+/documentation/man/*.1
+/.scannerwork
 *.beam
